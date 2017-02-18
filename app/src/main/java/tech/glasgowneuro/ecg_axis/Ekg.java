@@ -1,5 +1,9 @@
 package tech.glasgowneuro.ecg_axis;
 
+/**
+ * Sample ECG which is used to mock up the ECGs displayed
+ */
+
 public class Ekg
 {
 static final public int n=752/2-1;

@@ -5,13 +5,11 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
-import android.graphics.Rect;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 /**
- * Created by bp1 on 18/02/17.
+ * Plots the ECGs
  */
 
 public class ECGTracesView extends View {
@@ -19,8 +17,8 @@ public class ECGTracesView extends View {
     String TAG = "ECGTracesView";
     int width;
     int height;
-    Paint paint_axis;
     Paint paint_traces;
+    Paint paint_labels;
     float herzwinkel = 0;
 
     public ECGTracesView(Context context) {
@@ -44,10 +42,10 @@ public class ECGTracesView extends View {
     }
 
     private void doInit() {
-        paint_axis = new Paint();
-        paint_axis.setColor(Color.rgb(0, 0, 0));
         paint_traces = new Paint();
-        paint_traces.setColor(Color.rgb(0, 0, 0));
+        paint_traces.setColor(Color.rgb(0, 0, 255));
+        paint_labels = new Paint();
+        paint_labels.setColor(Color.rgb(0, 0, 0));
     }
 
     private void MaleEKG(Canvas g,
@@ -64,7 +62,7 @@ public class ECGTracesView extends View {
         }
         int y = dy / 2;
         y = y + y1;
-        g.drawLine(0, y, width, y, paint_axis);
+        g.drawLine(0, y, width, y, paint_traces);
         for (int x = 1; x < dx; x++) {
             double ya = -(double) (Ekg.Daten[x - 1][2] - isoII);
             ya = ya * a * Propfaktor;
@@ -97,10 +95,10 @@ public class ECGTracesView extends View {
             sw = height / 100;
         }
 
-        paint_axis.setStrokeWidth(sw);
-        paint_traces.setStrokeWidth(sw);
+        paint_traces.setStrokeWidth(sw/2);
+        paint_labels.setStrokeWidth(sw/2);
 
-        paint_traces.setTextSize(getHeight() / 10);
+        paint_labels.setTextSize(getHeight() / 10);
 
         //Log.d(TAG, "Drawing ECG");
 
@@ -123,7 +121,7 @@ public class ECGTracesView extends View {
             canvas.drawText(TheECGLeads[i],
                     width / 20,
                     y + p.y + (int) (dy / 2.0),
-                    paint_traces);
+                    paint_labels);
         }
 
     } // Paint

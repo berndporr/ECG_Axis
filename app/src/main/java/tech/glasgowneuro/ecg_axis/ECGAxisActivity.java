@@ -7,6 +7,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/**
+ * The main activity
+ */
+
+
 public class ECGAxisActivity extends AppCompatActivity {
 
 
@@ -66,6 +71,7 @@ public class ECGAxisActivity extends AppCompatActivity {
         dice.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 neuerHerzwinkel();
+                evaluation.setText(" ");
                 ecgAxisView.revealAngle(false);
                 solution.setVisibility(View.INVISIBLE);
             }

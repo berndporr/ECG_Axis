@@ -23,7 +23,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Angle" />
+            android:text="angle?" />
 
         <Button
             android:id="@+id/okbutton"
@@ -69,6 +69,8 @@
         android:orientation="horizontal">
 
         <TextView
+            android:text="github.com/berndporr/ECG_Axis"
+            android:textSize="40dp"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent" />

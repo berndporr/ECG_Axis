@@ -6,11 +6,10 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 
 /**
- * Created by bp1 on 18/02/17.
+ * Plots the Einthoven Triangle
  */
 
 public class ECGAxisView extends View {
@@ -20,7 +19,7 @@ public class ECGAxisView extends View {
     int height;
     Paint paint_black;
     Paint paint_blue;
-    Paint paint_red;
+    Paint paint_green;
     float herzwinkel = 0;
     boolean winkelanzeigen = false;
 
@@ -44,8 +43,8 @@ public class ECGAxisView extends View {
         paint_black.setColor(Color.rgb(0, 0, 0));
         paint_blue = new Paint();
         paint_blue.setColor(Color.rgb(0, 0, 255));
-        paint_red = new Paint();
-        paint_red.setColor(Color.rgb(255, 0, 0));
+        paint_green = new Paint();
+        paint_green.setColor(Color.rgb(255, 0, 0));
     }
 
     void setHerzwinkel(float _herzwinkel) {
@@ -87,11 +86,11 @@ public class ECGAxisView extends View {
         // Dreieck:
         WinkelZuXY(p1, m, -30, 1.2);
         WinkelZuXY(p2, m, 90, 1.2);
-        g.drawLine(p1.x, p1.y, p2.x, p2.y,paint_black);
+        g.drawLine(p1.x, p1.y, p2.x, p2.y,paint_blue);
 
         WinkelZuXY(p3, m, -150, 1.2);
-        g.drawLine(p2.x, p2.y, p3.x, p3.y,paint_black);
-        g.drawLine(p1.x, p1.y, p3.x, p3.y,paint_black);
+        g.drawLine(p2.x, p2.y, p3.x, p3.y,paint_blue);
+        g.drawLine(p1.x, p1.y, p3.x, p3.y,paint_blue);
 
         //Log.d(TAG,"w="+width+" h="+height+" x="+p1.x+" y="+p1.y+" x="+p2.x+" y="+p2.y+" x="+p3.x+" y="+p3.y);
 
