@@ -11,8 +11,17 @@
         <activity android:name=".ECGAxisActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter android:label="ecg_axis">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="http"
+                    android:host="www.attys.tech"
+                    android:pathPrefix="/software" />
+                <data android:scheme="example"
+                    android:host="ecg_axis" />
             </intent-filter>
         </activity>
     </application>

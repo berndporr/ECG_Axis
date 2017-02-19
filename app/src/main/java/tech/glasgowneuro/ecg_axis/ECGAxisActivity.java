@@ -1,11 +1,15 @@
 package tech.glasgowneuro.ecg_axis;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 /**
  * The main activity
@@ -26,6 +30,7 @@ public class ECGAxisActivity extends AppCompatActivity {
     ECGAxisView ecgAxisView;
     ECGTracesView ecgTracesView;
     TextView evaluation;
+    TextView attyslink;
 
     private void pruefeEingabe() {
         try {
@@ -56,6 +61,16 @@ public class ECGAxisActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ecgaxis);
 
+        attyslink = (TextView) findViewById(R.id.attyslink);
+        attyslink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "http://www.attys.tech";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            }
+        });
         angle = (EditText) findViewById(R.id.angle);
         ecgAxisView = (ECGAxisView) findViewById(R.id.ecgaxisview);
         ecgTracesView = (ECGTracesView) findViewById(R.id.ecgtracesview);
@@ -85,7 +100,7 @@ public class ECGAxisActivity extends AppCompatActivity {
                     ecgAxisView.revealAngle(true);
                 } else {
                     evaluation.setText("Sorry, try again. ");
-                    if (nattempts>3) {
+                    if (nattempts > 3) {
                         solution.setVisibility(View.VISIBLE);
                     }
                 }

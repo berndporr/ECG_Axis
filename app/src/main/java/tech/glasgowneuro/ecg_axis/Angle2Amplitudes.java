@@ -1,7 +1,7 @@
 package tech.glasgowneuro.ecg_axis;
 
 /**
- * Created by bp1 on 18/02/17.
+ * Converts from Angle to ECG amplitudes
  */
 
 public class Angle2Amplitudes {

@@ -3,12 +3,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.5"
         android:orientation="horizontal">
 
         <Button
@@ -23,7 +26,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="angle?" />
+            android:text="angle?"
+            android:inputType="numberDecimal|numberSigned"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.1"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/angle"
+            android:textSize="32sp"
+            android:text="\u00b0"/>
 
         <Button
             android:id="@+id/okbutton"
@@ -36,10 +48,10 @@
 
     <TextView
         android:id="@+id/evaluate"
-        android:gravity="end"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_width="match_parent" />
+        android:gravity="end" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -49,14 +61,14 @@
 
         <tech.glasgowneuro.ecg_axis.ECGAxisView
             android:id="@+id/ecgaxisview"
-            android:layout_height="match_parent"
             android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="2" />
 
         <tech.glasgowneuro.ecg_axis.ECGTracesView
             android:id="@+id/ecgtracesview"
-            android:layout_height="match_parent"
             android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="2" />
 
     </LinearLayout>
@@ -69,11 +81,11 @@
         android:orientation="horizontal">
 
         <TextView
-            android:text="github.com/berndporr/ECG_Axis"
-            android:textSize="40dp"
             android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_height="match_parent" />
+            android:text=" "
+            android:textSize="12sp" />
 
         <Button
             android:id="@+id/solution"
@@ -84,4 +96,28 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5">
+
+        <TextView
+            android:id="@+id/attyslink"
+            android:layout_gravity="start"
+            android:clickable="true"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="Record your own ECG: www.attys.tech"
+            android:textSize="12sp" />
+
+        <TextView
+            android:gravity="end"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="github.com/berndporr/ECG_Axis"
+            android:textSize="12sp" />
+
+    </LinearLayout>
 </LinearLayout>

@@ -14,7 +14,7 @@ import android.view.View;
 
 public class ECGTracesView extends View {
 
-    String TAG = "ECGTracesView";
+    //String TAG = "ECGTracesView";
     int width;
     int height;
     Paint paint_traces;
@@ -88,7 +88,7 @@ public class ECGTracesView extends View {
         width = canvas.getWidth();
         height = canvas.getHeight();
 
-        float sw = 0;
+        float sw;
         if (width > height) {
             sw = width / 100;
         } else {

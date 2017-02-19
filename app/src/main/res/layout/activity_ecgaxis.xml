@@ -3,12 +3,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_weight="1.5"
         android:orientation="horizontal">
 
         <Button
@@ -23,12 +26,21 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="angle?" />
+            android:text="angle?"
+            android:inputType="numberDecimal|numberSigned"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="0.1"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/angle"
+            android:textSize="24sp"
+            android:text="\u00b0"/>
 
         <Button
             android:id="@+id/okbutton"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="OK" />
 
@@ -71,7 +83,7 @@
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:text="github.com/berndporr/ECG_Axis"
+            android:text=" "
             android:layout_height="match_parent" />
 
         <Button
@@ -82,5 +94,32 @@
             android:text="Reveal solution" />
 
     </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.5">
+
+        <TextView
+            android:id="@+id/attyslink"
+            android:clickable="true"
+            android:layout_gravity="start"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="www.attys.tech"
+            android:textSize="12sp" />
+
+        <TextView
+            android:gravity="end"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="github.com/berndporr/ECG_Axis"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
 
 </LinearLayout>

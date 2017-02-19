@@ -14,7 +14,7 @@ import android.view.View;
 
 public class ECGAxisView extends View {
 
-    String TAG="ECGAxisView";
+    //String TAG="ECGAxisView";
     int width;
     int height;
     Paint paint_black;
@@ -132,7 +132,7 @@ public class ECGAxisView extends View {
         width = canvas.getWidth();
         height = canvas.getHeight();
 
-        float sw = 0;
+        float sw;
         if (width>height) {
             sw = width/100;
         } else {
