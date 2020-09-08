@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ECG_Axis.iml" filepath="$PROJECT_DIR$/ECG_Axis.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ECG_Axis.iml" filepath="$PROJECT_DIR$/ECG_Axis.iml" group="ECG_Axis" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="ECG_Axis/app" />
     </modules>
   </component>
 </project>
