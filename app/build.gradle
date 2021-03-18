@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
 
     defaultConfig {
         applicationId "tech.glasgowneuro.ecg_axis"
         minSdkVersion 17
-        targetSdkVersion 29
-        versionCode 6
-        versionName "1.1.0"
+        targetSdkVersion 30
+        versionCode 7
+        versionName "1.1.1"
     }
     buildTypes {
         release {
@@ -20,5 +20,5 @@ android {
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.gms:play-services-base:17.4.0'
+    implementation 'com.google.android.gms:play-services-base:17.6.0'
 }

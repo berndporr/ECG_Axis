@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="angle?"
-            android:inputType="numberDecimal|numberSigned"/>
+            android:inputType="numberDecimal|numberSigned" />
 
         <TextView
             android:layout_width="0dp"
@@ -48,7 +48,8 @@
 
     <TextView
         android:id="@+id/evaluate"
-        android:gravity="end"
+        android:gravity="center_horizontal"
+        android:textSize="20sp"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:layout_width="match_parent" />

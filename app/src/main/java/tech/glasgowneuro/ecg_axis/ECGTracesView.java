@@ -67,12 +67,12 @@ public class ECGTracesView extends View {
             double ya = -(double) (Ekg.Daten[x - 1][2] - isoII);
             ya = ya * a * Propfaktor;
             ya = ya * dy;
-            ya = ya + (dy / 2);
+            ya = ya + (dy / 2.0);
             ya = ya + y1;
             double yb = -(double) (Ekg.Daten[x][2] - isoII);
             yb = yb * a * Propfaktor;
             yb = yb * dy;
-            yb = yb + (dy / 2);
+            yb = yb + (dy / 2.0);
             yb = yb + y1;
             g.drawLine(x + x1 - 1, (int) ya, x + x1, (int) yb, paint_traces);
         }
@@ -83,10 +83,10 @@ public class ECGTracesView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        String TheECGLeads[] = {"I", "II", "III", "aVR", "aVL", "aVF"};
+        String[] TheECGLeads = {"I", "II", "III", "aVR", "aVL", "aVF"};
 
-        width = canvas.getWidth();
-        height = canvas.getHeight();
+        width = getWidth();
+        height = getHeight();
 
         float sw;
         if (width > height) {

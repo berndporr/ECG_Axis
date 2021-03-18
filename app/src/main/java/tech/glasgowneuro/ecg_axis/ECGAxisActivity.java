@@ -1,10 +1,13 @@
 package tech.glasgowneuro.ecg_axis;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -30,16 +33,6 @@ public class ECGAxisActivity extends AppCompatActivity {
     TextView evaluation;
     TextView attyslink;
 
-    private void pruefeEingabe() {
-        try {
-            nattempts++;
-            int Achse = Integer.parseInt(angle.getText().toString());
-            WinkelOk = ((Math.abs(Achse - herzwinkel) < 10) ||
-                    (Math.abs((Achse - 360) - herzwinkel) < 6) ||
-                    (Math.abs((Achse + 360) - herzwinkel) < 6));
-        } catch (NumberFormatException exception) {
-        }
-    }
 
     private void neuerHerzwinkel() {
         if (((int) (Math.random() * 10.0)) == 2) {
@@ -51,6 +44,35 @@ public class ECGAxisActivity extends AppCompatActivity {
         ecgTracesView.setAngle(herzwinkel);
         nattempts = 0;
         angle.setText("");
+    }
+
+
+    private void checkEntry() {
+        InputMethodManager imm = (InputMethodManager)
+                getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(angle.getWindowToken(), 0);
+        try {
+            nattempts++;
+            int Achse = Integer.parseInt(angle.getText().toString());
+            WinkelOk = ((Math.abs(Achse - herzwinkel) < 10) ||
+                    (Math.abs((Achse - 360) - herzwinkel) < 6) ||
+                    (Math.abs((Achse + 360) - herzwinkel) < 6));
+        } catch (NumberFormatException ignored) {
+            evaluation.setText("Input error");
+            return;
+        }
+        if (WinkelOk) {
+            evaluation.setText("Yass! That's right!");
+            ecgAxisView.revealAngle(true);
+            angle.setEnabled(false);
+            ok.setEnabled(false);
+
+        } else {
+            evaluation.setText("Sorry, try again.");
+            if (nattempts > 3) {
+                solution.setVisibility(View.VISIBLE);
+            }
+        }
     }
 
 
@@ -70,6 +92,14 @@ public class ECGAxisActivity extends AppCompatActivity {
             }
         });
         angle = (EditText) findViewById(R.id.angle);
+        angle.setEnabled(false);
+        angle.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                checkEntry();
+                return true;
+            }
+        });
         ecgAxisView = (ECGAxisView) findViewById(R.id.ecgaxisview);
         ecgTracesView = (ECGTracesView) findViewById(R.id.ecgtracesview);
         evaluation = (TextView) findViewById(R.id.evaluate);
@@ -77,6 +107,11 @@ public class ECGAxisActivity extends AppCompatActivity {
         solution.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 ecgAxisView.revealAngle(true);
+                evaluation.setText(" ");
+                angle.setText("");
+                angle.setEnabled(false);
+                ok.setEnabled(false);
+                solution.setVisibility(View.INVISIBLE);
             }
         });
         solution.setVisibility(View.INVISIBLE);
@@ -87,21 +122,15 @@ public class ECGAxisActivity extends AppCompatActivity {
                 evaluation.setText(" ");
                 ecgAxisView.revealAngle(false);
                 solution.setVisibility(View.INVISIBLE);
+                angle.setEnabled(true);
+                ok.setEnabled(true);
             }
         });
         ok = (Button) findViewById(R.id.okbutton);
+        ok.setEnabled(false);
         ok.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                pruefeEingabe();
-                if (WinkelOk) {
-                    evaluation.setText("Yass! That's right! ");
-                    ecgAxisView.revealAngle(true);
-                } else {
-                    evaluation.setText("Sorry, try again. ");
-                    if (nattempts > 3) {
-                        solution.setVisibility(View.VISIBLE);
-                    }
-                }
+                checkEntry();
             }
         });
     }
