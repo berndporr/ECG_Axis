@@ -2,5 +2,6 @@
 Android app which shows you a random ECG and you need
 to estimate the electrical heart axis.
 
+![alt tag](screenshot.png)
 
-It's based on the java applet on www.berndporr.me.uk.
+[Google play](https://play.google.com/store/apps/details?id=tech.glasgowneuro.ecg_axis)
