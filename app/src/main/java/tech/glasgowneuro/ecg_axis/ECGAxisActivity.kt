@@ -32,7 +32,7 @@ class ECGAxisActivity : AppCompatActivity() {
             (Math.random() * 150.0 - 30.0)
         }
         ecgAxisView!!.herzwinkel = herzwinkel
-        ecgTracesView!!.setAngle(herzwinkel)
+        ecgTracesView!!.herzwinkel = herzwinkel
         nattempts = 0
         angle!!.setText("")
     }

@@ -5,7 +5,6 @@ package tech.glasgowneuro.ecg_axis
  */
 object Ekg {
     const val n = 752 / 2 - 1
-    @JvmField
     val Daten = arrayOf(intArrayOf(
             0, -88, 44, -52), intArrayOf(
             2, -88, 43, -52), intArrayOf(

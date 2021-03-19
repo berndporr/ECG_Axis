@@ -15,9 +15,13 @@ class ECGTracesView : View {
     //String TAG = "ECGTracesView";
     var w = 0
     var h = 0
-    var paint_traces: Paint = Paint()
-    var paint_labels: Paint = Paint()
+    val paint_traces: Paint = Paint()
+    val paint_labels: Paint = Paint()
     var herzwinkel = 0.0
+        set(value) {
+            field = value
+            invalidate()
+        }
 
     constructor(context: Context?) : super(context) {
         doInit()
@@ -29,11 +33,6 @@ class ECGTracesView : View {
 
     constructor(context: Context?, attrs: AttributeSet?, defStyle: Int) : super(context, attrs, defStyle) {
         doInit()
-    }
-
-    fun setAngle(angle: Double) {
-        herzwinkel = angle
-        invalidate()
     }
 
     private fun doInit() {

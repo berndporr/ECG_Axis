@@ -7,6 +7,7 @@ import android.graphics.Paint
 import android.graphics.Point
 import android.util.AttributeSet
 import android.view.View
+import kotlin.math.roundToInt
 
 /**
  * Plots the Einthoven Triangle
@@ -101,14 +102,14 @@ class ECGAxisView : View {
         WinkelZuXY(p1, m, 90.0, 1.5)
         g.drawText("F", (p1.x - dd).toFloat(), (p1.y + dd).toFloat(), paint_black!!)
         if (winkelanzeigen) { // Pfeil
-            WinkelZuXY(p1, m, herzwinkel.toDouble(), 1.0)
+            WinkelZuXY(p1, m, herzwinkel, 1.0)
             g.drawLine(m.x.toFloat(), m.y.toFloat(), p1.x.toFloat(), p1.y.toFloat(), paint_black!!)
-            WinkelZuXY(p2, m, (herzwinkel + 5).toDouble(), 0.9)
-            WinkelZuXY(p3, m, (herzwinkel - 5).toDouble(), 0.9)
+            WinkelZuXY(p2, m, (herzwinkel + 5), 0.9)
+            WinkelZuXY(p3, m, (herzwinkel - 5), 0.9)
             g.drawLine(p1.x.toFloat(), p1.y.toFloat(), p3.x.toFloat(), p3.y.toFloat(), paint_black!!)
             g.drawLine(p1.x.toFloat(), p1.y.toFloat(), p2.x.toFloat(), p2.y.toFloat(), paint_black!!)
             WinkelZuXY(p3, m, 90.0, 1.5)
-            g.drawText("  $herzwinkel°", 0f, p3.y.toFloat(), paint_black!!)
+            g.drawText("  ${herzwinkel.roundToInt()}°", 0f, p3.y.toFloat(), paint_black!!)
         } // Pfeil
         WinkelZuXY(p, md, 90.0, 1.6)
     } // Dreieck
