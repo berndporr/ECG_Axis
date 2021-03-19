@@ -16,15 +16,16 @@ import androidx.appcompat.app.AppCompatActivity
 class ECGAxisActivity : AppCompatActivity() {
     private var herzwinkel:Double = 0.0
     private var WinkelOk = false
-    var nattempts = 0
-    var dice: Button? = null
-    var solution: Button? = null
-    var ok: Button? = null
-    var angle: EditText? = null
-    var ecgAxisView: ECGAxisView? = null
-    var ecgTracesView: ECGTracesView? = null
-    var evaluation: TextView? = null
-    var attyslink: TextView? = null
+    private var nattempts = 0
+    private var dice: Button? = null
+    private var solution: Button? = null
+    private var ok: Button? = null
+    private var angle: EditText? = null
+    private var ecgAxisView: ECGAxisView? = null
+    private var ecgTracesView: ECGTracesView? = null
+    private var evaluation: TextView? = null
+    private var attyslink: TextView? = null
+
     private fun neuerHerzwinkel() {
         herzwinkel = if ((Math.random() * 10.0).toInt() == 2) {
             (Math.random() * 360.0 - 150.0)

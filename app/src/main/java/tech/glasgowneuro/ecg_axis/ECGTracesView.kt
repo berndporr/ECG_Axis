@@ -13,11 +13,11 @@ import android.view.View
  */
 class ECGTracesView : View {
     //String TAG = "ECGTracesView";
-    var w = 0
-    var h = 0
-    val paint_traces: Paint = Paint()
-    val paint_labels: Paint = Paint()
-    var herzwinkel = 0.0
+    private var w = 0
+    private var h = 0
+    private val paint_traces: Paint = Paint()
+    private val paint_labels: Paint = Paint()
+    public var herzwinkel = 0.0
         set(value) {
             field = value
             invalidate()

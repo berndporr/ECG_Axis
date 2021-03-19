@@ -13,17 +13,16 @@ import kotlin.math.roundToInt
  * Plots the Einthoven Triangle
  */
 class ECGAxisView : View {
-    //String TAG="ECGAxisView";
-    var w = 0
-    var h = 0
-    var paint_black: Paint? = null
-    var paint_blue: Paint? = null
-    var paint_green: Paint? = null
-    var herzwinkel:Double = 0.0
-    set(value) {
-        field = value
-        invalidate()
-    }
+    private var w = 0
+    private var h = 0
+    private val paint_black = Paint()
+    private val paint_blue = Paint()
+    private val paint_green = Paint()
+    public var herzwinkel = 0.0
+        set(value) {
+            field = value
+            invalidate()
+        }
 
     var winkelanzeigen = false
 
@@ -40,12 +39,9 @@ class ECGAxisView : View {
     }
 
     private fun doInit() {
-        paint_black = Paint()
-        paint_black!!.color = Color.rgb(0, 0, 0)
-        paint_blue = Paint()
-        paint_blue!!.color = Color.rgb(0, 0, 255)
-        paint_green = Paint()
-        paint_green!!.color = Color.rgb(255, 0, 0)
+        paint_black.color = Color.rgb(0, 0, 0)
+        paint_blue.color = Color.rgb(0, 0, 255)
+        paint_green.color = Color.rgb(255, 0, 0)
     }
 
     fun revealAngle(showvector: Boolean) {
@@ -68,7 +64,7 @@ class ECGAxisView : View {
         p.y = m.y + (Math.sin(Herzw / pf) * xx.toDouble() * r).toInt()
     }
 
-    private fun MaleDreieck(g: Canvas) { // Male Dreieck
+    private fun MaleDreieck(g: Canvas) {
         val p = Point()
         val md = Point()
         WinkelZuXY(p, md, -30.0, 1.2)
@@ -76,40 +72,39 @@ class ECGAxisView : View {
         val p2 = Point()
         val p3 = Point()
         val m = Point()
+
         // Dreieck:
         WinkelZuXY(p1, m, -30.0, 1.2)
         WinkelZuXY(p2, m, 90.0, 1.2)
-        g.drawLine(p1.x.toFloat(), p1.y.toFloat(), p2.x.toFloat(), p2.y.toFloat(), paint_blue!!)
+        g.drawLine(p1.x.toFloat(), p1.y.toFloat(), p2.x.toFloat(), p2.y.toFloat(), paint_blue)
         WinkelZuXY(p3, m, -150.0, 1.2)
-        g.drawLine(p2.x.toFloat(), p2.y.toFloat(), p3.x.toFloat(), p3.y.toFloat(), paint_blue!!)
-        g.drawLine(p1.x.toFloat(), p1.y.toFloat(), p3.x.toFloat(), p3.y.toFloat(), paint_blue!!)
-
-        //Log.d(TAG,"w="+width+" h="+height+" x="+p1.x+" y="+p1.y+" x="+p2.x+" y="+p2.y+" x="+p3.x+" y="+p3.y);
+        g.drawLine(p2.x.toFloat(), p2.y.toFloat(), p3.x.toFloat(), p3.y.toFloat(), paint_blue)
+        g.drawLine(p1.x.toFloat(), p1.y.toFloat(), p3.x.toFloat(), p3.y.toFloat(), paint_blue)
 
         // Beschriftung:
-        paint_black!!.textSize = (getHeight() / 10).toFloat()
+        paint_black.textSize = (getHeight() / 10).toFloat()
         val dd = getWidth() / 75
         WinkelZuXY(p1, m, -30.0, 1.3)
-        g.drawText("L", (p1.x - dd).toFloat(), p1.y.toFloat(), paint_black!!)
+        g.drawText("L", (p1.x - dd).toFloat(), p1.y.toFloat(), paint_black)
         WinkelZuXY(p1, m, -150.0, 1.3)
-        g.drawText("R", (p1.x - dd).toFloat(), p1.y.toFloat(), paint_black!!)
+        g.drawText("R", (p1.x - dd).toFloat(), p1.y.toFloat(), paint_black)
         WinkelZuXY(p1, m, -90.0, 0.7)
-        g.drawText("I", (p1.x - dd).toFloat(), p1.y.toFloat(), paint_black!!)
+        g.drawText("I", (p1.x - dd).toFloat(), p1.y.toFloat(), paint_black)
         WinkelZuXY(p1, m, 30.0, 0.8)
-        g.drawText("III", (p1.x - dd).toFloat(), p1.y.toFloat(), paint_black!!)
+        g.drawText("III", (p1.x - dd).toFloat(), p1.y.toFloat(), paint_black)
         WinkelZuXY(p1, m, 150.0, 0.9)
-        g.drawText("II", (p1.x - dd).toFloat(), p1.y.toFloat(), paint_black!!)
+        g.drawText("II", (p1.x - dd).toFloat(), p1.y.toFloat(), paint_black)
         WinkelZuXY(p1, m, 90.0, 1.5)
-        g.drawText("F", (p1.x - dd).toFloat(), (p1.y + dd).toFloat(), paint_black!!)
+        g.drawText("F", (p1.x - dd).toFloat(), (p1.y + dd).toFloat(), paint_black)
         if (winkelanzeigen) { // Pfeil
             WinkelZuXY(p1, m, herzwinkel, 1.0)
-            g.drawLine(m.x.toFloat(), m.y.toFloat(), p1.x.toFloat(), p1.y.toFloat(), paint_black!!)
+            g.drawLine(m.x.toFloat(), m.y.toFloat(), p1.x.toFloat(), p1.y.toFloat(), paint_black)
             WinkelZuXY(p2, m, (herzwinkel + 5), 0.9)
             WinkelZuXY(p3, m, (herzwinkel - 5), 0.9)
-            g.drawLine(p1.x.toFloat(), p1.y.toFloat(), p3.x.toFloat(), p3.y.toFloat(), paint_black!!)
-            g.drawLine(p1.x.toFloat(), p1.y.toFloat(), p2.x.toFloat(), p2.y.toFloat(), paint_black!!)
+            g.drawLine(p1.x.toFloat(), p1.y.toFloat(), p3.x.toFloat(), p3.y.toFloat(), paint_black)
+            g.drawLine(p1.x.toFloat(), p1.y.toFloat(), p2.x.toFloat(), p2.y.toFloat(), paint_black)
             WinkelZuXY(p3, m, 90.0, 1.5)
-            g.drawText("  ${herzwinkel.roundToInt()}°", 0f, p3.y.toFloat(), paint_black!!)
+            g.drawText("  ${herzwinkel.roundToInt()}°", 0f, p3.y.toFloat(), paint_black)
         } // Pfeil
         WinkelZuXY(p, md, 90.0, 1.6)
     } // Dreieck
@@ -124,9 +119,7 @@ class ECGAxisView : View {
         } else {
             (h / 100).toFloat()
         }
-        paint_black!!.strokeWidth = sw
-
-        //Log.d(TAG,"Drawing ECG");
+        paint_black.strokeWidth = sw
         MaleDreieck(canvas)
     } // Paint
 }
