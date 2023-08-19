@@ -2,14 +2,22 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 33
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
 
     defaultConfig {
         applicationId "tech.glasgowneuro.ecg_axis"
-        minSdkVersion 17
-        targetSdkVersion 30
-        versionCode 8
-        versionName "1.1.2"
+        minSdkVersion 30
+        targetSdkVersion 33
+        versionCode 9
+        versionName "1.1.3"
     }
     buildTypes {
         release {
@@ -17,13 +25,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    namespace 'tech.glasgowneuro.ecg_axis'
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.gms:play-services-base:17.6.0'
-    implementation "androidx.core:core-ktx:1.3.2"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.gms:play-services-base:18.2.0'
+    implementation "androidx.core:core-ktx:1.10.1"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.10"
 }
 repositories {
     mavenCentral()
