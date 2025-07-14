@@ -69,7 +69,7 @@ class ECGAxisActivity : AppCompatActivity() {
         setContentView(R.layout.activity_ecgaxis)
         attyslink = findViewById(R.id.attyslink)
         attyslink!!.setOnClickListener {
-            val url = "http://www.attys.tech"
+            val url = "https://www.glasgowneuro.com/"
             val i = Intent(Intent.ACTION_VIEW)
             i.data = Uri.parse(url)
             startActivity(i)
